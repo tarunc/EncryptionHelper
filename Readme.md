@@ -99,7 +99,7 @@ Use `openssl list-cipher-algorithms` or `console.log(require('crypto').getCipher
 
 Returns: the deciphered/unencrypted `String` or `Buffer`
 
-**Also contains functions to create cipher/decipher from files**
+**Also contains functions to cipher/decipher from files**
 
 ## TODO
 * HMAC support
