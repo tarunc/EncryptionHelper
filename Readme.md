@@ -77,7 +77,7 @@ Ciphers `data` with the given `key`.
 
 Parameters:
 * `key` - `String` - a secret key (eg: `'you-will-never-guess'`)
-* `data` - `String` or `Buffer` - represents the data to be used to create the hash
+* `data` - `String` or `Buffer` - represents the data to be used to create the cipher
 * `algorithm` - `String` - represents the algorithm to be used to create the digest.
 Use `openssl list-cipher-algorithms` or `console.log(require('crypto').getCiphers());` to display the avaiable digest algorithms on your machine. Defaults to `'md5'`.
 * `outputEncoding` - `String` - represents the encoding of the output produced by this function. This can be `'hex'`, `'binary'`, or `'base64'`. If encoding is passed in as null, then a buffer is returned. Defaults to `'hex'`.
