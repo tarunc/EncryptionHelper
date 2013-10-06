@@ -1,7 +1,20 @@
 
 # EncryptionHelper
 
-  A collection of helper functions that encrypt, decrypt, and hash strings and files based on the native crypto module
+  A collection of helper functions that encrypt, decrypt, and hash strings and files based on the native crypto module.
+  This module can be used to create ciphers and decipher them.
+
+## Installation
+
+`npm install --save encryptionhelper`
+
+## Usage
+
+```javascript
+var EncryptionHelper = require('encryptionhelper');
+
+var hash = EncryptionHelper.
+```
 
 ## License
 
