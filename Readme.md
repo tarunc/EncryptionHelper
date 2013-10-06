@@ -1,8 +1,8 @@
 
 # EncryptionHelper
 
-  A collection of helper functions that encrypt, decrypt, and hash strings and files based on the native crypto module.
-  This module can be used to create ciphers and decipher them.
+  A collection of helper functions that encrypt, decrypt, and hash strings and files based on NodeJS's native `crypto` module.
+  This module can be used to create ciphers and decipher them. It makes dealing with Node's `crypto` module a lot easier.
 
 ## Installation
 
@@ -13,11 +13,11 @@
 ```javascript
 var EncryptionHelper = require('encryptionhelper');
 
-var hash = EncryptionHelper.checksum('some buffer/string data', 'md5');
+var hash = EncryptionHelper.hash('some buffer/string data', 'md5');
 // hash is equal to md5 of the given string
 // Also supports MD5, SHA1, SHA256, and many more (based on whatever NodeJS natively supports-- use `openssl list-message-digest-algorithms` to display the avaiable digest algorithms on your machine)
 
-var fileStream = EncryptionHelper.checksumFile('path/to/file', 'md5', function (err, res) {
+var fileStream = EncryptionHelper.hashFile('path/to/file', 'md5', function (err, res) {
   // err is any error that occured
   // res is the md5 hash of the file at path/to/file
 });
@@ -44,13 +44,30 @@ var fileStream = EncryptionHelper.decipherFile(myKey, 'path/to/file', function (
 
 ## API
 
-#### EncryptionHelper.checksum(data, [algorithm, [outputEncoding, [inputEncoding]]]);
+#### EncryptionHelper.hash(data, [algorithm, [outputEncoding, [inputEncoding]]]);
 
 Calculates and returns a checksum `String` or `Buffer`, the digest of all of the passed `data` to be hashed.
 
 Parameters:
-* `data` - `String` or `Buffer` - represents the data to be used to create the checksum
-* `algorithm` - `String` - represents the algorithm to be used to create the digest
+* `data` - `String` or `Buffer` - represents the data to be used to create the hash
+* `algorithm` - `String` - represents the algorithm to be used to create the digest. Use `openssl list-message-digest-algorithms` to display the avaiable digest algorithms on your machine or `console.log(require('crypto').getHashes());` Defaults to `'md5'`.
+* `outputEncoding` - `String` - represents the encoding of the output produced by this function. This can be `'hex'`, `'binary'`, or `'base64'`. If encoding is passed in as null, then a buffer is returned. Defaults to `'hex'`.
+* `inputEncoding` - `String` - represents the encoding of the input `data`. This can be `'utf8'`, `'ascii'`, or `'binary'`. If encoding is passed in as null, then a buffer is expected. Defaults to `'utf8'`.
+
+Returns: a hash string
+
+#### EncryptionHelper.hashFile(filePath, [algorithm, [outputEncoding, [inputEncoding]]], cb);
+
+Calculates and returns a checksum `String` or `Buffer`, the digest of all of the passed `data` to be hashed.
+
+Parameters:
+* `file` - `String` - represents the path to the file to be used to create the hash
+* `algorithm` - `String` - represents the algorithm to be used to create the digest. Use `openssl list-message-digest-algorithms` to display the avaiable digest algorithms on your machine or `console.log(require('crypto').getHashes());` Defaults to `'md5'`.
+* `outputEncoding` - `String` - represents the encoding of the output produced by this function. This can be `'hex'`, `'binary'`, or `'base64'`. If encoding is passed in as null, then a buffer is returned. Defaults to `'hex'`.
+* `inputEncoding` - `String` - represents the encoding of the input `data`. This can be `'utf8'`, `'ascii'`, or `'binary'`. If encoding is passed in as null, then a buffer is expected. Defaults to `'utf8'`.
+* `cb` - `Function` - A callback to run afterwords. The method signature looks like: `function (err, hash){ }`
+
+Returns: an open file stream
 
 ## License
 
