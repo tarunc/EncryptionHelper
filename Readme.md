@@ -83,7 +83,7 @@ Use `openssl list-cipher-algorithms` or `console.log(require('crypto').getCipher
 * `outputEncoding` - `String` - represents the encoding of the output produced by this function. This can be `'hex'`, `'binary'`, or `'base64'`. If encoding is passed in as null, then a buffer is returned. Defaults to `'hex'`.
 * `inputEncoding` - `String` - represents the encoding of the input `data`. This can be `'utf8'`, `'ascii'`, or `'binary'`. If encoding is passed in as null, then a buffer is expected. Defaults to `'utf8'`.
 
-Returns: a ciphered/encrypted `String`
+Returns: a ciphered/encrypted `String` or `Buffer`
 
 #### EncryptionHelper.decipher(key, ciphered, [algorithm, [outputEncoding, [inputEncoding]]]);
 
@@ -92,18 +92,21 @@ Deciphers previously encrypted `ciphered` that was ciphered with the given `key`
 Parameters:
 * `key` - `String` - a secret key (eg: `'you-will-never-guess'`)
 * `ciphered` - `String` or `Buffer` - represents the ciphered data to be deciphered
-* `algorithm` - `String` - represents the algorithm to be used to create the cipher.
+* `algorithm` - `String` - represents the algorithm which was used to create the cipher.
 Use `openssl list-cipher-algorithms` or `console.log(require('crypto').getCiphers());` to display the avaiable cipher algorithms on your machine. Defaults to `'md5'`.
-* `outputEncoding` - `String` - represents the encoding of the input `data`. This can be `'utf8'`, `'ascii'`, or `'binary'`. If encoding is passed in as null, then a buffer is expected. Defaults to `'utf8'`.
-* `inputEncoding` - `String` - represents the encoding of the output produced by this function. This can be `'hex'`, `'binary'`, or `'base64'`. If encoding is passed in as null, then a buffer is returned. Defaults to `'hex'`.
+* `outputEncoding` - `String` - represents the encoding of the output produced by this function. This can be `'utf8'`, `'ascii'`, or `'binary'`. If encoding is passed in as null, then a buffer is returned. Defaults to `'utf8'`.
+* `inputEncoding` - `String` - represents the encoding of the input `ciphered`. This can be `'hex'`, `'binary'`, or `'base64'`. If encoding is passed in as null, then a buffer is expected. Defaults to `'hex'`.
 
-Returns: the deciphered/unencrypted `String`
+Returns: the deciphered/unencrypted `String` or `Buffer`
+
+**Also contains functions to create cipher/decipher from files**
 
 ## TODO
 * HMAC support
 * CipherIV support
 * DiffieHellman support
 * Unit Tests
+* Pipe files directly into Hash/Cipher streams
 
 ## License
 
