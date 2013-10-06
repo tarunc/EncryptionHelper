@@ -22,7 +22,7 @@ var fileHash = EncryptionHelper.checksumFile('path/to/file', 'md5', function (er
   // res is the md5 hash of the file at path/to/file
 });
 
-var myKey = 'my_secret_private_key';
+var myKey = 'you-will-never-guess';
 var cipher = EncryptionHelper.cipher(myKey, 'some buffer/string data', 'aes256');
 // Creates a aes256-based cipher using the key provided
 // Supports more than just the AES256 algo-- supports all the algo's NodeJS's crypto module supports
