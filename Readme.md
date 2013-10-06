@@ -50,7 +50,8 @@ Calculates and returns a checksum `String` or `Buffer`, the digest of all of the
 
 Parameters:
 * `data` - `String` or `Buffer` - represents the data to be used to create the hash
-* `algorithm` - `String` - represents the algorithm to be used to create the digest. Use `openssl list-message-digest-algorithms` to display the avaiable digest algorithms on your machine or `console.log(require('crypto').getHashes());` Defaults to `'md5'`.
+* `algorithm` - `String` - represents the algorithm to be used to create the digest.
+Use `openssl list-message-digest-algorithms` or `console.log(require('crypto').getHashes());` to display the avaiable digest algorithms on your machine. Defaults to `'md5'`.
 * `outputEncoding` - `String` - represents the encoding of the output produced by this function. This can be `'hex'`, `'binary'`, or `'base64'`. If encoding is passed in as null, then a buffer is returned. Defaults to `'hex'`.
 * `inputEncoding` - `String` - represents the encoding of the input `data`. This can be `'utf8'`, `'ascii'`, or `'binary'`. If encoding is passed in as null, then a buffer is expected. Defaults to `'utf8'`.
 
@@ -62,7 +63,8 @@ Calculates and returns a checksum `String` or `Buffer`, the digest of all of the
 
 Parameters:
 * `file` - `String` - represents the path to the file to be used to create the hash
-* `algorithm` - `String` - represents the algorithm to be used to create the digest. Use `openssl list-message-digest-algorithms` to display the avaiable digest algorithms on your machine or `console.log(require('crypto').getHashes());` Defaults to `'md5'`.
+* `algorithm` - `String` - represents the algorithm to be used to create the digest.
+Use `openssl list-message-digest-algorithms` or `console.log(require('crypto').getHashes());` to display the avaiable digest algorithms on your machine. Defaults to `'md5'`.
 * `outputEncoding` - `String` - represents the encoding of the output produced by this function. This can be `'hex'`, `'binary'`, or `'base64'`. If encoding is passed in as null, then a buffer is returned. Defaults to `'hex'`.
 * `inputEncoding` - `String` - represents the encoding of the input `data`. This can be `'utf8'`, `'ascii'`, or `'binary'`. If encoding is passed in as null, then a buffer is expected. Defaults to `'utf8'`.
 * `cb` - `Function` - A callback to run afterwords. The method signature looks like: `function (err, hash){ }`
