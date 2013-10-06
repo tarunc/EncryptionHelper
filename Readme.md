@@ -44,6 +44,13 @@ var fileStream = EncryptionHelper.decipherFile(myKey, 'path/to/file', function (
 
 ## API
 
+#### EncryptionHelper.checksum(data, [algorithm, [outputEncoding, [inputEncoding]]]);
+
+Calculates and returns a checksum `String` or `Buffer`, the digest of all of the passed `data` to be hashed.
+
+Parameters:
+* `data` - `String` or `Buffer` - represents the data to be used to create the checksum
+* `algorithm` - `String` - represents the algorithm to be used to create the digest
 
 ## License
 
