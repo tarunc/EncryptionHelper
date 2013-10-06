@@ -15,9 +15,9 @@ var EncryptionHelper = require('encryptionhelper');
 
 var hash = EncryptionHelper.checksum('some buffer/string data', 'md5');
 // hash is equal to md5 of the given string
-// Also supports MD5, SHA1, SHA256, and more (based on whatever NodeJS natively supports)
+// Also supports MD5, SHA1, SHA256, and many more (based on whatever NodeJS natively supports-- use `openssl list-message-digest-algorithms` to display the avaiable digest algorithms on your machine)
 
-var fileHash = EncryptionHelper.checksumFile('path/to/file', 'md5', function (err, res) {
+var fileStream = EncryptionHelper.checksumFile('path/to/file', 'md5', function (err, res) {
   // err is any error that occured
   // res is the md5 hash of the file at path/to/file
 });
@@ -26,10 +26,24 @@ var myKey = 'you-will-never-guess';
 var cipher = EncryptionHelper.cipher(myKey, 'some buffer/string data', 'aes256');
 // Creates a aes256-based cipher using the key provided
 // Supports more than just the AES256 algo-- supports all the algo's NodeJS's crypto module supports
+// Use `openssl list-cipher-algorithms` to display the available cipher algorithms on your machine
 
 var originalString =  EncryptionHelper.decipher(myKey, cipher);
 // originalString === 'some buffer/string data'
+
+var fileStream = EncryptionHelper.cipherFile(myKey, 'path/to/file', function (err, res) {
+  // err is any error that occured
+  // res is the ciphered/encrypted version of the file's contents
+});
+
+var fileStream = EncryptionHelper.decipherFile(myKey, 'path/to/file', function (err, res) {
+  // err is any error that occured
+  // res is the deciphered/unencrypted version of the file's contents
+});
 ```
+
+## API
+
 
 ## License
 
