@@ -1,6 +1,6 @@
 {
   "name": "encryptionhelper",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A collection of helper functions that encrypt, decrypt, and hash strings and files based on the native crypto module",
   "keywords": ["encryption", "decryption", "hashing", "md5", "aes", "hex", "crypto", "files", "strings"],
   "author": "Tarun Chaudhry <tarunc92@gmail.com>",
