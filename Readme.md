@@ -13,7 +13,22 @@
 ```javascript
 var EncryptionHelper = require('encryptionhelper');
 
-var hash = EncryptionHelper.
+var hash = EncryptionHelper.checksum('some buffer/string data', 'md5');
+// hash is equal to md5 of the given string
+// Also supports MD5, SHA1, SHA256, and more (based on whatever NodeJS natively supports)
+
+var fileHash = EncryptionHelper.checksumFile('path/to/file', 'md5', function (err, res) {
+  // err is any error that occured
+  // res is the md5 hash of the file at path/to/file
+});
+
+var myKey = 'my_secret_private_key';
+var cipher = EncryptionHelper.cipher(myKey, 'some buffer/string data', 'aes256');
+// Creates a aes256-based cipher using the key provided
+// Supports more than just the AES256 algo-- supports all the algo's NodeJS's crypto module supports
+
+var originalString =  EncryptionHelper.decipher(myKey, cipher);
+// originalString === 'some buffer/string data'
 ```
 
 ## License
